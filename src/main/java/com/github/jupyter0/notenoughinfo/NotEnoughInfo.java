@@ -3,6 +3,7 @@ package com.github.jupyter0.notenoughinfo;
 import com.github.jupyter0.notenoughinfo.events.TooltipEvents;
 import com.github.jupyter0.notenoughinfo.overlays.TooltipOverlay;
 import com.github.jupyter0.notenoughinfo.util.AHManager;
+import com.github.jupyter0.notenoughinfo.util.BazzarManager;
 import com.github.jupyter0.notenoughinfo.util.TickScheduler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -17,5 +18,6 @@ public class NotEnoughInfo {
         MinecraftForge.EVENT_BUS.register(new TickScheduler());
 
         AHManager.UpdateAH();
+        BazzarManager.CallAPI();
     }
 }

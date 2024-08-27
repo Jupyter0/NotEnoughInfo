@@ -7,10 +7,11 @@ public class TickScheduler {
     boolean ahTrigger = true;
     @SubscribeEvent
     public void Ticker(TickEvent event) {
-        if (System.currentTimeMillis() % 30000 < 50) {
+        if (System.currentTimeMillis() % 15000 < 50) {
             if (ahTrigger) {
                 ahTrigger = false;
                 AHManager.UpdateAH();
+                BazzarManager.CallAPI();
             }
         } else {
             ahTrigger = true;

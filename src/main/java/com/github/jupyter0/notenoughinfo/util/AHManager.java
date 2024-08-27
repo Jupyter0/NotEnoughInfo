@@ -18,7 +18,6 @@ public class AHManager {
     public static LinkedList<Integer> pagesToDownload = null;
 
     public static void UpdateAH() {
-        long startTime = System.currentTimeMillis();
 
         if (pagesToDownload == null) {
             ParseAPIPage(0);
@@ -31,13 +30,6 @@ public class AHManager {
             } catch (NoSuchElementException e) {
                 return;
             }
-        }
-        long totalMillis = System.currentTimeMillis() - startTime;
-
-        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
-
-        if (player != null) {
-            player.addChatMessage(new ChatComponentText("§2[NEI] Updated LBIN Table in " + totalMillis + "ms"));
         }
     }
 

@@ -11,11 +11,9 @@ public class TooltipEvents {
     @SubscribeEvent
     public void TooltipEvent(ItemTooltipEvent event) {
         NBTTagCompound nbtData = event.itemStack.serializeNBT();
-
         String internalID = NBTUtil.ResolveInternalNameFromNBT(nbtData);
 
         if (internalID.equals("")) return;
-
         if (AHManager.lBIN.get(internalID) != null) {
 
             long itemLBIN = AHManager.lBIN.get(internalID).getAsLong();
@@ -40,13 +38,13 @@ public class TooltipEvents {
                     suffix = "K";
                     adjustedValue /= 1_000L;
                 }
-
-
                 event.toolTip.add("§2LBIN §e" + Math.round(adjustedValue*10)/10 + suffix);
             }
         }
-        TooltipOverlay.tooltipToggle = true;
         TooltipOverlay.ItemID = internalID;
+        TooltipOverlay.displayName = nbtData.getCompoundTag("tag").getCompoundTag("display").getString("Name");
+        TooltipOverlay.nbtData = nbtData;
         event.toolTip.add(internalID);
+        TooltipOverlay.tooltipToggle = true;
     }
 }
